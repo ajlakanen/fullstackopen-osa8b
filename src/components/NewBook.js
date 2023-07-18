@@ -32,7 +32,8 @@ const NewBook = (props) => {
 
   const submit = async (event) => {
     event.preventDefault();
-    addBook({ variables: { title, author, published, genres } });
+    const publishedInt = parseInt(published);
+    addBook({ variables: { title, author, publishedInt, genres } });
 
     console.log("add book...");
 
