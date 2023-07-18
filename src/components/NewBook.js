@@ -9,7 +9,10 @@ const NewBook = (props) => {
   const [genre, setGenre] = useState("");
   const [genres, setGenres] = useState([]);
 
-  const [createPerson] = useMutation(CREATE_BOOK, {
+  const [addBook] = useMutation(CREATE_BOOK);
+  /* vv WIP vv
+  const [addBook] = useMutation(CREATE_BOOK
+  , {
     refetchQueries: [{ query: ALL_BOOKS }, { query: ALL_AUTHORS }],
     onError: (error) => {
       console.log("error", error);
@@ -20,6 +23,8 @@ const NewBook = (props) => {
       console.log(messages);
     },
   });
+  * ^^ WIP ^^
+  */
 
   if (!props.show) {
     return null;
@@ -27,8 +32,7 @@ const NewBook = (props) => {
 
   const submit = async (event) => {
     event.preventDefault();
-
-    createPerson({ variables: { title, author, published, genres } });
+    addBook({ variables: { title, author, published, genres } });
 
     console.log("add book...");
 
